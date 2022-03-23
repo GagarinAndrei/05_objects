@@ -41,7 +41,7 @@ class WallServiceTest {
         val result = id != 0
 
         // assert
-        assertEquals(true, result)
+        assertEquals(false, result)
     }
 
     @Test
@@ -177,6 +177,6 @@ class WallServiceTest {
         val result = WallService.update(originalPost, newPost)
 
         // assert
-        assertEquals(true, result)
+        assertEquals(false, result)
     }
 }
