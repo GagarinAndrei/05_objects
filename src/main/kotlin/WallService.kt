@@ -36,36 +36,36 @@ object WallService {
             postponedId) = newPost
 
         for ((index, post) in posts.withIndex()) {
-            if (post.id == id) {
-                posts[index] = post.copy(
-                    id = id,
-                    ownerId =ownerId,
-                    fromId = fromId,
-                    createdBy = createdBy,
-                    date = date,
-                    text = text,
-                    replyOwnerId = replyOwnerId,
-                    replyPostId = replyPostId,
-                    friendsOnly = friendsOnly,
-                    comments = comments,
-                    copyright = copyright,
-                    likes = likes,
-                    reposts = reposts,
-                    views = views,
-                    postType = postType,
-                    signerId = signerId,
-                    copyHistory = copyHistory,
-                    canPin = canPin,
-                    canDelete = canDelete,
-                    canEdit = canEdit,
-                    isPinned = isPinned,
-                    markedAsAds = markedAsAds,
-                    isFavorite = isFavorite,
-                    donut = donut,
-                    postponedId = postponedId
-                )
-                result = true
-            } else result = false
+                if (post.id == id) {
+                    posts[index] = post.copy(
+                        id = id,
+                        ownerId = ownerId,
+                        fromId = fromId,
+                        createdBy = createdBy,
+                        date = date,
+                        text = text,
+                        replyOwnerId = replyOwnerId,
+                        replyPostId = replyPostId,
+                        friendsOnly = friendsOnly,
+                        comments = comments,
+                        copyright = copyright,
+                        likes = likes,
+                        reposts = reposts,
+                        views = views,
+                        postType = postType,
+                        signerId = signerId,
+                        copyHistory = copyHistory,
+                        canPin = canPin,
+                        canDelete = canDelete,
+                        canEdit = canEdit,
+                        isPinned = isPinned,
+                        markedAsAds = markedAsAds,
+                        isFavorite = isFavorite,
+                        donut = donut,
+                        postponedId = postponedId
+                    )
+                    result = true
+                }
         }
         return result
     }
