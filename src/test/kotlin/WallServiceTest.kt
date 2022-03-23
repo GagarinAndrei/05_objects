@@ -103,10 +103,11 @@ class WallServiceTest {
         )
 
         // act
+        WallService.clearPosts()
         val result = WallService.update(originalPost, newPost)
 
         // assert
-        assertFalse(result)
+        assertEquals(false, result)
     }
 
     @Test
@@ -171,9 +172,11 @@ class WallServiceTest {
         )
 
         // act
+        WallService.clearPosts()
+        WallService.add(originalPost)
         val result = WallService.update(originalPost, newPost)
 
         // assert
-        assertTrue(result)
+        assertEquals(true, result)
     }
 }

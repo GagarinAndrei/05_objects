@@ -1,7 +1,7 @@
 import kotlin.random.Random
 
 internal data class Post (
-    internal val id: Int = generateId(),
+    internal val id: Int,
     internal val ownerId: Int,
     internal val fromId: Int,
     internal val createdBy: Int,
