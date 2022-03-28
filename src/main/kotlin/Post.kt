@@ -32,17 +32,3 @@ internal data class Post (
 internal fun generateId(): Int {
     return Random(Int.MAX_VALUE).hashCode()
 }
-
-internal fun addAttachment(type: String): Array<Attachment> {
-    var array = emptyArray<Attachment>()
-    val attachmentType = when (type) {
-        is "video" -> VideoAttachment(Video(1, 1, 1, 1))
-        is "audio" -> AudioAttachment(Audio(2, 2, 2, 2))
-        is "photo" -> PhotoAttachment(Photo(3, 3, 3, 3))
-        is "doc" -> DocAttachment(Doc(4, 4, 4, 4))
-        is "link" -> LinkAttachment(Link(5, 5, 5, 5))
-        else -> {null}
-    }
-    array += attachmentType
-    return array
-}
