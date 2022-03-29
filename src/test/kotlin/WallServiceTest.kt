@@ -204,7 +204,10 @@ class WallServiceTest {
             reposts = Reposts,
             views = Views,
             postType = "Some type",
-            attachment = arrayOf(VideoAttachment(Video(1, 2, 3, 4)), AudioAttachment(Audio(2, 3, 45, 5))),
+            attachment = arrayOf(
+                VideoAttachment(Video(1, 2, 3, 4)),
+                AudioAttachment(Audio(2, 3, 45, 5))
+            ),
             signerId = 0,
             copyHistory = emptyArray<Reposts>(),
             canPin = true,
