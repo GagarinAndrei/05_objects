@@ -75,18 +75,4 @@ object WallService {
     internal fun clearPosts() {
         posts = emptyArray<Post>()
     }
-
-    internal fun addAttachment(type: String): Array<Attachment> {
-        val array = emptyArray<Attachment>()
-        val attachmentType: Attachment = when (type) {
-            "video" -> VideoAttachment(Video(1, 1, 1, 1))
-            "audio" -> AudioAttachment(Audio(2, 2, 2, 2))
-            "photo" -> PhotoAttachment(Photo(3, 3, 3, 3))
-            "link" -> LinkAttachment(Link(5, 5, 5, 5))
-            else -> DocAttachment(Doc(4, 4, 4, 4))
-
-        }
-        array.plusElement(attachmentType)
-            return array
-    }
 }
