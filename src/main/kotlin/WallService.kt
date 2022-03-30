@@ -1,5 +1,6 @@
 object WallService {
     private var posts = emptyArray<Post>()
+    private var commentsArray = emptyArray<Comment>()
 
     internal fun add(post: Post): Post {
         posts += post
@@ -74,5 +75,18 @@ object WallService {
 
     internal fun clearPosts() {
         posts = emptyArray<Post>()
+    }
+
+    internal fun createComment(comment: Comment): Boolean {
+        var postNumber: Int = -1
+        for (i in 0 until posts.size) {
+            if (comment.postId == posts[i].id) {
+                postNumber = i
+            }
+        }
+        if (postNumber != -1) {
+            posts[postNumber].comments = posts[postNumber].comments?.plus(comment)
+            return true
+        } else throw PostNotFoundException("Post not found!")
     }
 }

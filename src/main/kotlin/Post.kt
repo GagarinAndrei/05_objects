@@ -10,7 +10,7 @@ internal data class Post (
     internal val replyOwnerId: Int,
     internal val replyPostId: Int,
     internal val friendsOnly: Boolean,
-    internal val comments: Comments?,
+    internal var comments: Array<Comment>? = emptyArray(),
     internal val copyright: Copyright?,
     internal val likes: Likes?,
     internal val reposts: Reposts?,
