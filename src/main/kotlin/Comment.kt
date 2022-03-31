@@ -1,5 +1,5 @@
 class Comment(
-    internal val id: Int = generateId(),
+    internal val id: Int,
     internal val postId: Int,
     internal val fromId: Int,
     internal val date: Int,

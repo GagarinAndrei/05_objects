@@ -1,7 +1,5 @@
-import kotlin.random.Random
-
-internal data class Post (
-    internal val id: Int = generateId(),
+data class Post (
+    internal val id: Int,
     internal val ownerId: Int,
     internal val fromId: Int,
     internal val createdBy: Int,
@@ -29,6 +27,6 @@ internal data class Post (
     internal val postponedId: Int
 )
 
-internal fun generateId(): Int {
-    return Random(Int.MAX_VALUE).hashCode()
-}
+//fun generateId(): Int {
+//    return Random(Int.MAX_VALUE).hashCode()
+//}

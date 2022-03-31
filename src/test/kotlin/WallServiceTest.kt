@@ -1,3 +1,4 @@
+import WallService.generateId
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -42,7 +43,7 @@ class WallServiceTest {
         val result = id != 0
 
         // assert
-        assertEquals(true, result)
+        assertTrue(result)
     }
 
     @Test
@@ -110,7 +111,7 @@ class WallServiceTest {
         val result = WallService.update(originalPost, newPost)
 
         // assert
-        assertEquals(false, result)
+        assertFalse(result)
     }
 
     @Test
@@ -182,7 +183,7 @@ class WallServiceTest {
         val result = WallService.update(originalPost, newPost)
 
         // assert
-        assertEquals(true, result)
+        assertTrue(result)
     }
 
     @Test
@@ -265,11 +266,24 @@ class WallServiceTest {
         WallService.clearPosts()
         WallService.add(originalPost)
         val (id) = originalPost
-        val result = WallService.createComment(Comment(generateId(), id, 0, 0, "sdfgjkhsdfhjkdfhjk", Donut, true, 0, 0, emptyArray<Attachment>()))
+        val result = WallService.createComment(
+            Comment(
+                generateId(),
+                id,
+                0,
+                0,
+                "sdfgjkhsdfhjkdfhjk",
+                Donut,
+                true,
+                0,
+                0,
+                emptyArray<Attachment>()
+            )
+        )
 
 
         // assert
-        assertEquals(true, result)
+        assertTrue(result)
     }
 
     @Test(expected = PostNotFoundException::class)
@@ -307,6 +321,19 @@ class WallServiceTest {
         // act
         WallService.clearPosts()
         WallService.add(originalPost)
-        val result = WallService.createComment(Comment(generateId(), generateId(), 0, 0, "sdfgjkhsdfhjkdfhjk", Donut, true, 0, 0, emptyArray<Attachment>()))
+        WallService.createComment(
+            Comment(
+                generateId(),
+                generateId(),
+                0,
+                0,
+                "sdfgjkhsdfhjkdfhjk",
+                Donut,
+                true,
+                0,
+                0,
+                emptyArray<Attachment>()
+            )
+        )
     }
 }

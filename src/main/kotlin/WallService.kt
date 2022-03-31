@@ -2,12 +2,12 @@ object WallService {
     private var posts = emptyArray<Post>()
     private var commentsArray = emptyArray<Comment>()
 
-    internal fun add(post: Post): Post {
+    fun add(post: Post): Post {
         posts += post
         return posts.last()
     }
 
-    internal fun update(originalPost: Post, newPost: Post): Boolean {
+    fun update(originalPost: Post, newPost: Post): Boolean {
         var result = false
         val (originalId) = originalPost
         val (id,
@@ -73,13 +73,13 @@ object WallService {
         return result
     }
 
-    internal fun clearPosts() {
+    fun clearPosts() {
         posts = emptyArray<Post>()
     }
 
-    internal fun createComment(comment: Comment): Boolean {
+    fun createComment(comment: Comment): Boolean {
         var postNumber: Int = -1
-        for (i in 0 until posts.size) {
+        for (i in posts.indices) {
             if (comment.postId == posts[i].id) {
                 postNumber = i
             }
@@ -88,5 +88,9 @@ object WallService {
             posts[postNumber].comments = posts[postNumber].comments?.plus(comment)
             return true
         } else throw PostNotFoundException("Post not found!")
+    }
+
+    fun generateId(): Int {
+        return if (posts.isEmpty()) 1 else posts.last().id + 1
     }
 }
