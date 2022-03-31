@@ -9,12 +9,12 @@ object WallService {
 
     fun update(originalPost: Post, newPost: Post): Boolean {
         var result = false
-        val (originalId) = originalPost
+        val (originalId, originalOwner, _, _, originalDate) = originalPost
         val (id,
-            ownerId,
+            _,
             fromId,
             createdBy,
-            date,
+            _,
             text,
             replyOwnerId,
             replyPostId,
@@ -41,10 +41,10 @@ object WallService {
             if (post.id == id) {
                 posts[index] = post.copy(
                     id = originalId,
-                    ownerId = ownerId,
+                    ownerId = originalOwner,
                     fromId = fromId,
                     createdBy = createdBy,
-                    date = date,
+                    date = originalDate,
                     text = text,
                     replyOwnerId = replyOwnerId,
                     replyPostId = replyPostId,
