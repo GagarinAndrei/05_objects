@@ -1,19 +1,20 @@
 object WallService {
     private var posts = emptyArray<Post>()
+    private var commentsArray = emptyArray<Comment>()
 
-    internal fun add(post: Post): Post {
+    fun add(post: Post): Post {
         posts += post
         return posts.last()
     }
 
-    internal fun update(originalPost: Post, newPost: Post): Boolean {
+    fun update(originalPost: Post, newPost: Post): Boolean {
         var result = false
-        val (originalId) = originalPost
+        val (originalId, originalOwner, _, _, originalDate) = originalPost
         val (id,
-            ownerId,
+            _,
             fromId,
             createdBy,
-            date,
+            _,
             text,
             replyOwnerId,
             replyPostId,
@@ -40,10 +41,10 @@ object WallService {
             if (post.id == id) {
                 posts[index] = post.copy(
                     id = originalId,
-                    ownerId = ownerId,
+                    ownerId = originalOwner,
                     fromId = fromId,
                     createdBy = createdBy,
-                    date = date,
+                    date = originalDate,
                     text = text,
                     replyOwnerId = replyOwnerId,
                     replyPostId = replyPostId,
@@ -72,7 +73,24 @@ object WallService {
         return result
     }
 
-    internal fun clearPosts() {
+    fun clearPosts() {
         posts = emptyArray<Post>()
+    }
+
+    fun createComment(comment: Comment): Boolean {
+        var postNumber: Int = -1
+        for (i in posts.indices) {
+            if (comment.postId == posts[i].id) {
+                postNumber = i
+            }
+        }
+        if (postNumber != -1) {
+            posts[postNumber].comments = posts[postNumber].comments?.plus(comment)
+            return true
+        } else throw PostNotFoundException("Post not found!")
+    }
+
+    fun generateId(): Int {
+        return if (posts.isEmpty()) 1 else posts.last().id + 1
     }
 }
